@@ -1,0 +1,31 @@
+# Server
+PORT=5001
+ 
+# Local Postgres (native dev, no Docker) — create db/user first:
+#   createuser -s remote && createdb -O remote remote && psql -c "ALTER USER remote PASSWORD 'remote';"
+# Postgres must run with wal_level=logical (see postgresql.conf).
+DATABASE_URL=postgres://remote:remote@localhost:5432/remote?sslmode=disable
+# Workspace
+WORKSPACE_ROOT=/Users/admin/projects
+ 
+# Organisation (single-tenant; was previously passed via x-organisation-id header)
+ORG_ID=dfskdfjskadfhkasfbs
+ 
+# AI Layer Template
+AI_TEMPLATE_REPO_URL=https://github.com/sandeepp-org/sdd-scaffold
+AI_TEMPLATE_REPO_URL=https://dev.azure.com/aatmix/Pivotal/_git/repo-nexus-scaffold
+# GitHub — leave commented/unset when using `gh auth login`.
+# Setting a bogus value here will break gh (it prefers env over its keychain).
+# GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxx
+ 
+# Kanban SDK
+ 
+KANBAN_SDK_BASE_URL=http://localhost:4000
+# UUID from GET /api/v1/vibe-kanban/organizations (or project.organization_id)
+VIBE_KANBAN_ORGANIZATION_ID=58d63e4e-8d72-4246-a0b4-17e27c085cb7
+VIBE_KANBAN_ORGANIZATION_NAME=Aatmix-System-Private-Limited
+ 
+# VK local agent — direct calls for repo registration and scratch writes (bypasses sdk-integration)
+VK_AGENT_URL=http://localhost:3000
+GITHUB_REPO_OWNER="sandeepp-org"
+AZURE_DEVOPS_PAT=
